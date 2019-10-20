@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 export default function Dashboard() {
 
     const classes = useStyles();
+
     //CTX store
     const [allChats] = React.useContext(CTX);
 
@@ -67,7 +68,7 @@ export default function Dashboard() {
                 <List>
                     {
                         topics.map(topic => (
-                            <ListItem key={topic} button>
+                            <ListItem onClick={e => changeActiveTopic(e.target.innerText)} key={topic} button>
                                 <ListItemText primary="topic" />
                             </ListItem>
                         ))
