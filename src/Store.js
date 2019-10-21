@@ -39,8 +39,8 @@ function reducer(state, action) {
         case 'RECEIVE_MESSAGE':
             return {
                 ...state,
-                [action.payload.topic]: [
-                    ...state[action.payload.topic],
+                [topic]: [
+                    ...state[topic],
                     { from, msg }
                 ]
             }

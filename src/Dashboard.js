@@ -78,7 +78,7 @@ export default function Dashboard() {
             </div>
             <div className={classes.chatWindow}>
                 {
-                    allChats[activeTopic].map((chat, i) => (
+                    [{from: 'user', msg: 'hello'}].map((chat, i) => (
                         <div className={classes.flex} key={i}>
                             <Chip label={chat.from} className={classes.chip} />
                             <Typography variant='body1' gutterBottom>{chat.msg}</Typography>
