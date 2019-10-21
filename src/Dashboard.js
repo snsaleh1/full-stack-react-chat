@@ -1,7 +1,8 @@
 import React from 'react'
+
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -47,10 +48,10 @@ export default function Dashboard() {
     //CTX store
     const [allChats] = React.useContext(CTX);
 
+    const topics = Object.keys(allChats);
     //local state
-    const [activeTopic, changeActiveTopic] = React.useState(topics[0])
-
-    const topics = Object.keys(allChats)
+    const [activeTopic, changeActiveTopic] = React.useState(topics[0]);
+    
 
     const [textValue, changeTextValue] = React.useState('');
 
@@ -77,7 +78,7 @@ export default function Dashboard() {
             </div>
             <div className={classes.chatWindow}>
                 {
-                    [{from: 'user', msg:'hello'}].map((chat, i) => (
+                    allChats[activeTopic].map((chat, i) => (
                         <div className={classes.flex} key={i}>
                             <Chip label={chat.from} className={classes.chip} />
                             <Typography variant='body1' gutterBottom>{chat.msg}</Typography>
