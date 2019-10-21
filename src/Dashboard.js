@@ -47,12 +47,9 @@ export default function Dashboard() {
 
     //CTX store
     const [allChats] = React.useContext(CTX);
-
     const topics = Object.keys(allChats);
     //local state
     const [activeTopic, changeActiveTopic] = React.useState(topics[0]);
-    
-
     const [textValue, changeTextValue] = React.useState('');
 
   return (
@@ -70,7 +67,7 @@ export default function Dashboard() {
                     {
                         topics.map(topic => (
                             <ListItem onClick={e => changeActiveTopic(e.target.innerText)} key={topic} button>
-                                <ListItemText primary="topic" />
+                                <ListItemText primary={topic} />
                             </ListItem>
                         ))
                     }
@@ -78,7 +75,7 @@ export default function Dashboard() {
             </div>
             <div className={classes.chatWindow}>
                 {
-                    [{from: 'user', msg: 'hello'}].map((chat, i) => (
+                    allChats[activeTopic].map((chat, i) => (
                         <div className={classes.flex} key={i}>
                             <Chip label={chat.from} className={classes.chip} />
                             <Typography variant='body1' gutterBottom>{chat.msg}</Typography>
