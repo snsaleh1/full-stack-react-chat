@@ -62,13 +62,13 @@ export default function Store(props) {
     if (!socket) {
         socket = io(':3001');
         socket.on('chat message', function(msg){
-            console.log({msg});
+            dispatch({type: 'RECEIVE_MESSAGE', payload: msg})
         });
     }
 
     const user = 'Caleb' + Math.random(100).toFixed(2)
 
-    const [allChats] = React.useReducer(reducer, initState)
+    const [allChats, dispatch] = React.useReducer(reducer, initState)
 
     return (
         <CTX.Provider value={{allChats, sendChatAction, user}}>
